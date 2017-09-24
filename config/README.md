@@ -5,8 +5,8 @@ allowing you to run your app in different environments.
 
 Config properties are considered in the following order:
 
-   1 - Env variables (Upper case format, e.g. FIRST_NAME)
-   2 - json file (Standard camel case syntax, e.g. firstName)
+   1. Env variables (Upper case format, e.g. FIRST_NAME)
+   2. json file (Standard camel case syntax, e.g. firstName)
 
 Each item takes precedence over the item below it.
 
