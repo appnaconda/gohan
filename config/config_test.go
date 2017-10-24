@@ -43,7 +43,7 @@ func TestEnvConfigName(t *testing.T) {
 		{"", "", ""},
 		{"Debug", "", "DEBUG"},
 		{"Port", "", "PORT"},
-		{"Username", "Db", "DB_USERNAME"},
+		{"Username", "DB", "DB_USERNAME"},
 		{"age", "person", "PERSON_AGE"},
 		{"City", "Address_", "ADDRESS_CITY"},
 		{"user_name", "db", "DB_USER_NAME"},
@@ -240,6 +240,9 @@ func TestLoadIgnoreField(t *testing.T) {
 		t.Errorf("Required Field - Expecting: true, Got: %+v", c.Debug)
 	}
 
+	os.Unsetenv("USERNAME")
+	os.Unsetenv("DEBUG")
+
 }
 
 // Testing required fields
@@ -403,6 +406,9 @@ func TestLoadStringConfigValue(t *testing.T) {
 	if *c.PtrUsername != "gohan2" {
 		t.Errorf("Config String - Expecting: gohan2, Got: %s", *c.PtrUsername)
 	}
+
+	os.Unsetenv("USERNAME")
+	os.Unsetenv("PTR_USERNAME")
 
 }
 
@@ -763,7 +769,6 @@ func TestLoadJSONConfig(t *testing.T) {
 		}
 	}
 	`
-
 	if err := ioutil.WriteFile("config.json", []byte(json), os.ModePerm); err != nil {
 		t.Errorf("Json Loading - Expecting: No error; Got: %v", err)
 	}
@@ -775,7 +780,7 @@ func TestLoadJSONConfig(t *testing.T) {
 	}
 
 	if c.Username != "gohan2" {
-		t.Errorf("Json Loading - Expecting: gohan; Got: %s", c.Username)
+		t.Errorf("Json Loading - Expecting: gohan2; Got: %s", c.Username)
 	}
 
 	if c.Role != "admin2" {
