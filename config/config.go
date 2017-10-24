@@ -12,16 +12,16 @@
 package config
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"reflect"
 	"strconv"
 	"strings"
 
-	"encoding/json"
 	"github.com/serenize/snaker"
-	"io/ioutil"
 )
 
 // Property Object Definition.
