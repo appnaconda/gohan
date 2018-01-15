@@ -1,5 +1,5 @@
 # gohan.io
       
-> TODO
+> TODO: Pending
 
 ![Alt text](logo.png "Gohan")
