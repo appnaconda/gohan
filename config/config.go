@@ -301,7 +301,8 @@ func getConfigNamePrefix(fieldName, prefix string) string {
 func getEnvConfigName(fieldName, prefix string) string {
 	var envName string
 	if prefix != "" {
-		envName = fmt.Sprintf("%s_%s", snaker.CamelToSnake(strings.TrimSuffix(prefix, "_")), snaker.CamelToSnake(fieldName))
+		p := strings.ToLower(prefix)
+		envName = fmt.Sprintf("%s_%s", snaker.CamelToSnake(strings.TrimSuffix(p, "_")), snaker.CamelToSnake(fieldName))
 	} else {
 		envName = snaker.CamelToSnake(fieldName)
 	}
